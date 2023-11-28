@@ -38,8 +38,13 @@ module ExportToCsv
     end
 
     def track_ids(album)
-      # FIXME: 50曲を超える場合にはオフセットの設定が必要
-      album.tracks.map(&:id)
+      # 一度に取得できるのは 50曲 なのでオフセットを設定する必要がある
+      total_tracks = album.total_tracks
+      number_of_offset_units = (total_tracks / 50) + 1
+
+      number_of_offset_units.times.map do |i|
+        album.tracks(limit: 50, offset: i * 50).map(&:id)
+      end.flatten
     end
 
     def headers
@@ -60,32 +65,35 @@ module ExportToCsv
     def rows(track_ids)
       rows = []
 
-      tracks = Spotify::FetchTracksService.new.execute(track_ids)
+      # Spotify::FetchTracksService.new.execute では一度に取得できる上限が 50 なのでループする必要がある
+      track_ids.each_slice(50) do |track_50_ids|
+        tracks = Spotify::FetchTracksService.new.execute(track_50_ids)
 
-      tracks.each do |track|
-        disc_number = track.disc_number
-        duration_ms = track.duration_ms
-        isrc = track.external_ids['isrc']
-        api_href = track.href
-        spotify_external_url = track.external_urls['spotify']
-        id = track.id
-        name = track.name
-        popularity = track.popularity
-        preview_url = track.preview_url
-        track_number = track.track_number
+        tracks.each do |track|
+          disc_number = track.disc_number
+          duration_ms = track.duration_ms
+          isrc = track.external_ids['isrc']
+          api_href = track.href
+          spotify_external_url = track.external_urls['spotify']
+          id = track.id
+          name = track.name
+          popularity = track.popularity
+          preview_url = track.preview_url
+          track_number = track.track_number
 
-        rows << {
-          id:,
-          isrc:,
-          name:,
-          popularity:,
-          duration_ms:,
-          disc_number:,
-          track_number:,
-          spotify_external_url:,
-          preview_url:,
-          api_href:
-        }
+          rows << {
+            id:,
+            isrc:,
+            name:,
+            popularity:,
+            duration_ms:,
+            disc_number:,
+            track_number:,
+            spotify_external_url:,
+            preview_url:,
+            api_href:
+          }
+        end
       end
 
       rows
