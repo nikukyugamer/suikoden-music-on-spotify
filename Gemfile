@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
+gem 'activerecord-import'
 gem 'dotenv-rails'
 gem 'puma'
 gem 'rails'
