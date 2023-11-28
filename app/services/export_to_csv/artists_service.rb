@@ -22,16 +22,15 @@ module ExportToCsv
       nil
     end
 
-    # TODO: CSV だと順番も重要だから人間の目に優しくしたい
     def headers
       %w[
-        href
-        spotify_external_url
         id
-        image_height
-        image_url
         name
         popularity
+        spotify_external_url
+        image_url
+        image_height
+        href
       ]
     end
 
@@ -51,13 +50,13 @@ module ExportToCsv
         popularity = artist.popularity
 
         rows << {
-          href:,
-          spotify_external_url:,
           id:,
-          image_height:,
-          image_url:,
           name:,
-          popularity:
+          popularity:,
+          spotify_external_url:,
+          image_url:,
+          image_height:,
+          href:
         }
       end
 
