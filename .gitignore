@@ -2,6 +2,7 @@
 vendor/bundle
 /.env*
 !/.env*.erb
+!/.env.sample
 
 /log/*
 /tmp/*
