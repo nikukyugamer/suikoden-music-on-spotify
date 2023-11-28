@@ -1,0 +1,44 @@
+name: 幻水音楽考 on Spotify
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - 'v*.*.*'
+
+env:
+  TZ: Asia/Tokyo
+  RAILS_ENV: test
+
+jobs:
+  form:
+    runs-on: ubuntu-22.04
+    name: 幻水音楽考
+    strategy:
+      matrix:
+        ruby-version:
+          - .ruby-version
+    steps:
+      - name: $ git clone する
+        uses: actions/checkout@v3
+      - name: Ruby をセットアップする
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+      - name: RuboCop を実行する
+        run: |
+          bundle exec rubocop
+      - name: データベースをセットアップする
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+      - name: RSpec を実行する
+        run: |
+          bundle exec rspec
