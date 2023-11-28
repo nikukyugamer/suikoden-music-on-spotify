@@ -6,6 +6,7 @@ gem 'activerecord-import'
 gem 'dotenv-rails'
 gem 'puma'
 gem 'rails'
+gem 'rspotify'
 gem 'sprockets-rails'
 gem 'sqlite3'
 
