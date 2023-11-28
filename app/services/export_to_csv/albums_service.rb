@@ -29,18 +29,18 @@ module ExportToCsv
     # TODO: CSV だと順番も重要だから人間の目に優しくしたい
     def headers
       %w[
-        name
-        upc
-        href
-        spotify_external_url
         id
-        image_height
-        image_url
+        upc
+        name
         label
         popularity
+        total_tracks
+        spotify_external_url
+        image_url
+        image_height
         release_date
         release_date_precision
-        total_tracks
+        api_href
       ]
     end
 
@@ -52,7 +52,7 @@ module ExportToCsv
 
         name = album_name
         upc = album.external_ids['upc']
-        href = album.href
+        api_href = album.href
         spotify_external_url = album.external_urls['spotify']
         id = album.id
         # 異なる画像サイズの個数分の配列になっていて、最初が最大サイズであることはきっと保証されている
@@ -65,18 +65,18 @@ module ExportToCsv
         total_tracks = album.total_tracks
 
         rows << {
-          name:,
-          upc:,
-          href:,
-          spotify_external_url:,
           id:,
-          image_height:,
-          image_url:,
+          upc:,
+          name:,
           label:,
           popularity:,
+          total_tracks:,
+          spotify_external_url:,
+          image_url:,
+          image_height:,
           release_date:,
           release_date_precision:,
-          total_tracks:
+          api_href:
         }
       end
 
