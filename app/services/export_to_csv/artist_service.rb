@@ -5,7 +5,7 @@ module ExportToCsv
     end
 
     def execute
-      # CSV で db/csv 配下に書き出す
+      # FIXME: CSV で db/csv 配下に書き出す
     end
   end
 end
