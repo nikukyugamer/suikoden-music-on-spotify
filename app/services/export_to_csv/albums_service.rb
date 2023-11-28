@@ -26,7 +26,6 @@ module ExportToCsv
       nil
     end
 
-    # TODO: CSV だと順番も重要だから人間の目に優しくしたい
     def headers
       %w[
         id
