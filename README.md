@@ -15,3 +15,6 @@
 - [幻想水滸伝V ORIGINAL SOUNDTRACK SELECTION ‑「アルバム」by 幻想水滸伝音楽チーム | Spotify](https://open.spotify.com/intl-ja/album/2bZlVti3G35TXHANYliIUF)
 - [幻想水滸伝ティアクライス ORIGINAL SOUNDTRACK ‑「アルバム」by 幻想水滸伝ティアクライス音楽チーム | Spotify](https://open.spotify.com/intl-ja/album/0CvxwMIrf6nWyTH0d7Syz1)
 - [幻想水滸伝 紡がれし百年の時 オリジナルサウンドトラック ‑「アルバム」by 幻想水滸伝サウンドチーム | Spotify](https://open.spotify.com/intl-ja/album/6lrUOdg6kX2ITMezqHVrTC)
+
+## RubyGems
+- [RSpotify](https://github.com/guilhermesad/rspotify)
