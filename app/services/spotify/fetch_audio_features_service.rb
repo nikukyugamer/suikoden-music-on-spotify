@@ -33,7 +33,8 @@ module Spotify
     #   @uri="spotify:track:4A4qxXQZwv2rUl7lmkl4Lw",
     #   @valence=0.342>
     def execute(track_id)
-      Spotify::FetchTrackService.new.execute(track_id).audio_features
+      # TODO: Bulk で取得する方法がある？
+      Spotify::FetchTracksService.new.execute(track_id).audio_features
     end
   end
 end
