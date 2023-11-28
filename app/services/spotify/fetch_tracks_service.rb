@@ -1,5 +1,5 @@
 module Spotify
-  class FetchTrackService
+  class FetchTracksService
     def initialize
       client_id = ENV.fetch('CLIENT_ID', nil)
       client_secret = ENV.fetch('CLIENT_SECRET', nil)
@@ -28,8 +28,9 @@ module Spotify
     # @track_number=20,
     # @type="track",
     # @uri="spotify:track:4A4qxXQZwv2rUl7lmkl4Lw">
-    def execute(track_id)
-      RSpotify::Track.find(track_id)
+    # NOTE: 単数でも配列でも大丈夫
+    def execute(track_ids)
+      RSpotify::Track.find(track_ids)
     end
   end
 end
