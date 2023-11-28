@@ -222,12 +222,11 @@ PLATFORMS
 
 DEPENDENCIES
   debug
-  puma (>= 5.0)
-  rails (~> 7.1.2)
+  puma
+  rails
   rubocop-rails
   sprockets-rails
-  sqlite3 (~> 1.4)
-  tzinfo-data
+  sqlite3
 
 RUBY VERSION
    ruby 3.2.2p53
