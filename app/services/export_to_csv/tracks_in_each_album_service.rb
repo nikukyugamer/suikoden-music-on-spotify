@@ -38,22 +38,22 @@ module ExportToCsv
     end
 
     def track_ids(album)
+      # FIXME: 50曲を超える場合にはオフセットの設定が必要
       album.tracks.map(&:id)
     end
 
-    # TODO: CSV だと順番も重要だから人間の目に優しくしたい
     def headers
       %w[
-        disc_number
-        duration_ms
-        isrc
-        href
-        spotify_external_url
         id
+        isrc
         name
         popularity
-        preview_url
+        duration_ms
+        disc_number
         track_number
+        spotify_external_url
+        preview_url
+        api_href
       ]
     end
 
@@ -66,7 +66,7 @@ module ExportToCsv
         disc_number = track.disc_number
         duration_ms = track.duration_ms
         isrc = track.external_ids['isrc']
-        href = track.href
+        api_href = track.href
         spotify_external_url = track.external_urls['spotify']
         id = track.id
         name = track.name
@@ -75,16 +75,16 @@ module ExportToCsv
         track_number = track.track_number
 
         rows << {
-          disc_number:,
-          duration_ms:,
-          isrc:,
-          href:,
-          spotify_external_url:,
           id:,
+          isrc:,
           name:,
           popularity:,
+          duration_ms:,
+          disc_number:,
+          track_number:,
+          spotify_external_url:,
           preview_url:,
-          track_number:
+          api_href:
         }
       end
 
