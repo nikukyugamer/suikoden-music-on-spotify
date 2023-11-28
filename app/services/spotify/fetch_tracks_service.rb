@@ -30,6 +30,7 @@ module Spotify
     # @uri="spotify:track:4A4qxXQZwv2rUl7lmkl4Lw">
     # 単数でも配列でも大丈夫
     def execute(track_ids)
+      # 一度に取得できる数（与えることができる配列長）の上限は 50 である
       RSpotify::Track.find(track_ids)
     end
   end
