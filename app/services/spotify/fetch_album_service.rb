@@ -10,6 +10,7 @@ module Spotify
       )
     end
 
+    # rubocop:disable Layout/LineLength
     # #<RSpotify::Album:0x00007f4618cffb60
     # @album_type="album",
     # @artists=
@@ -44,6 +45,7 @@ module Spotify
     # @total_tracks=58,
     # @type="album",
     # @uri="spotify:album:1DEfvfv6tr5O5HoM8oUaUp">
+    # rubocop:enable Layout/LineLength
     def execute(album_name)
       RSpotify::Album.find(album_name_to_album_id[album_name])
     end
