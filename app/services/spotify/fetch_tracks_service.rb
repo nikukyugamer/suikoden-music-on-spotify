@@ -28,7 +28,7 @@ module Spotify
     # @track_number=20,
     # @type="track",
     # @uri="spotify:track:4A4qxXQZwv2rUl7lmkl4Lw">
-    # NOTE: 単数でも配列でも大丈夫
+    # 単数でも配列でも大丈夫
     def execute(track_ids)
       RSpotify::Track.find(track_ids)
     end

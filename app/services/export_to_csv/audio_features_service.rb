@@ -59,7 +59,7 @@ module ExportToCsv
         upc = album.external_ids['upc']
         href = album.href
         id = album.id
-        # NOTE: 異なる画像サイズの個数分の配列になっていて、最初が最大サイズであることはきっと保証されている
+        # 異なる画像サイズの個数分の配列になっていて、最初が最大サイズであることはきっと保証されている
         image_height = album.images.first['height']
         image_url = album.images.first['url']
         label = album.label

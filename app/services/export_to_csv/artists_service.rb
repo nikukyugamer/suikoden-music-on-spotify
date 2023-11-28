@@ -44,7 +44,7 @@ module ExportToCsv
         href = artist.href
         spotify_external_url = artist.external_urls['spotify']
         id = artist.id
-        # NOTE: 異なる画像サイズの個数分の配列になっていて、最初が最大サイズであることはきっと保証されている
+        # 異なる画像サイズの個数分の配列になっていて、最初が最大サイズであることはきっと保証されている
         image_height = artist.images.first['height']
         image_url = artist.images.first['url']
         name = artist.name
