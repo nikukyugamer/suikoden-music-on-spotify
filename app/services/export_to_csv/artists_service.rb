@@ -30,7 +30,7 @@ module ExportToCsv
         spotify_external_url
         image_url
         image_height
-        href
+        api_href
       ]
     end
 
@@ -40,7 +40,7 @@ module ExportToCsv
       ARTIST_NAMES.each do |artist_name|
         artist = Spotify::FetchArtistService.new.execute(artist_name)
 
-        href = artist.href
+        api_href = artist.href
         spotify_external_url = artist.external_urls['spotify']
         id = artist.id
         # 異なる画像サイズの個数分の配列になっていて、最初が最大サイズであることはきっと保証されている
@@ -56,7 +56,7 @@ module ExportToCsv
           spotify_external_url:,
           image_url:,
           image_height:,
-          href:
+          api_href:
         }
       end
 
