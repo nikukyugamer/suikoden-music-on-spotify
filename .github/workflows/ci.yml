@@ -39,6 +39,10 @@ jobs:
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
+      # Spec の方でインポートを行うので実際には不要である
+      - name: CSV から DB にデータをインポートする
+        run: |
+          bundle exec rails runner 'ImportToDb::ArtistService.new.execute'
       - name: RSpec を実行する
         run: |
           bundle exec rspec
