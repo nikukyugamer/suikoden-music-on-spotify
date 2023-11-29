@@ -11,7 +11,7 @@ module ImportToDb
 
       @csv_data.each do |data|
         artist = Artist.new(
-          spotify_id: data['id'],
+          id_str: data['id'],
           name: data['name'],
           popularity: data['popularity'].to_i,
           url: data['spotify_external_url'],
