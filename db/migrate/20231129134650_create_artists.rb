@@ -1,7 +1,7 @@
 class CreateArtists < ActiveRecord::Migration[7.1]
   def change
     create_table :artists do |t|
-      t.string :spotify_id, null: false, comment: 'Spotify のアーティストID'
+      t.string :id_str, null: false, comment: 'Spotify のアーティストID'
       t.string :name, null: false, comment: 'アーティスト名'
       t.integer :popularity, null: false, comment: 'アーティストの"人気度"'
       t.string :url, null: false, comment: 'アーティストのURL'
@@ -12,7 +12,7 @@ class CreateArtists < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :artists, :spotify_id, unique: true
+    add_index :artists, :id_str, unique: true
     add_index :artists, :url, unique: true
     add_index :artists, :image_url, unique: true
     add_index :artists, :api_href, unique: true
