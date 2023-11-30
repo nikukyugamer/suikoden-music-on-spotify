@@ -7,10 +7,8 @@ module ImportToDb
     end
 
     def execute
-      artists = []
-
-      @csv_data.each do |data|
-        artist = Artist.new(
+      artists = @csv_data.map do |data|
+        Artist.new(
           id_str: data['id'],
           name: data['name'],
           popularity: data['popularity'].to_i,
@@ -19,8 +17,6 @@ module ImportToDb
           image_height: data['image_height'].to_i,
           api_href: data['api_href']
         )
-
-        artists << artist
       end
 
       Artist.import!(artists, on_duplicate_key_ignore: true)
