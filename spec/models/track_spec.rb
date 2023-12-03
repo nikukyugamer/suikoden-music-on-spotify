@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Track, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'Album へのアソシエーションが設定されていること' do
+    expect(Track.first.album.class).to eq Album
+  end
 end
