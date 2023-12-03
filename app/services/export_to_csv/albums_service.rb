@@ -29,6 +29,7 @@ module ExportToCsv
     def headers
       %w[
         id
+        artist_id
         upc
         name
         label
@@ -63,8 +64,12 @@ module ExportToCsv
         release_date_precision = album.release_date_precision
         total_tracks = album.total_tracks
 
+        # 一つのアルバムに複数のアーティストが紐づいていることはないから first でよい
+        artist_id = album.artists.first.id
+
         rows << {
           id:,
+          artist_id:,
           upc:,
           name:,
           label:,
