@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_03_034452) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_03_050800) do
   create_table "albums", force: :cascade do |t|
     t.integer "artist_id", null: false
     t.string "id_str", null: false
@@ -51,6 +51,32 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_03_034452) do
     t.index ["url"], name: "index_artists_on_url", unique: true
   end
 
+  create_table "features", force: :cascade do |t|
+    t.integer "album_id", null: false
+    t.string "id_str", null: false
+    t.integer "duration_ms", null: false
+    t.float "tempo", null: false
+    t.integer "time_signature", null: false
+    t.integer "key", null: false
+    t.integer "mode", null: false
+    t.float "acousticness", null: false
+    t.float "danceability", null: false
+    t.float "energy", null: false
+    t.float "instrumentalness", null: false
+    t.float "liveness", null: false
+    t.float "loudness", null: false
+    t.float "speechiness", null: false
+    t.float "valence", null: false
+    t.string "api_analysis_url", null: false
+    t.string "api_track_href", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_features_on_album_id"
+    t.index ["api_analysis_url"], name: "index_features_on_api_analysis_url", unique: true
+    t.index ["api_track_href"], name: "index_features_on_api_track_href", unique: true
+    t.index ["id_str"], name: "index_features_on_id_str", unique: true
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.integer "album_id", null: false
     t.string "id_str", null: false
@@ -74,5 +100,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_03_034452) do
   end
 
   add_foreign_key "albums", "artists"
+  add_foreign_key "features", "albums"
   add_foreign_key "tracks", "albums"
 end
