@@ -2,20 +2,8 @@ require 'csv'
 
 module ExportToCsv
   class AudioFeaturesService
-    # FIXME: yaml から ALBUM_NAMES を読み込むようにする
-    ALBUM_NAMES = [
-      '幻想水滸伝 ORIGINAL GAME SOUNDTRACK',
-      '幻想水滸伝II ORIGINAL GAME SOUNDTRACK Vol.1',
-      '幻想水滸伝II ORIGINAL GAME SOUNDTRACK Vol.2',
-      '幻想水滸伝III ORIGINAL SOUNDTRACK SELECTION',
-      '幻想水滸伝IV ORIGINAL SOUNDTRACK SELECTION',
-      '幻想水滸伝V ORIGINAL SOUNDTRACK SELECTION',
-      '幻想水滸伝ティアクライス ORIGINAL SOUNDTRACK',
-      '幻想水滸伝 紡がれし百年の時 オリジナルサウンドトラック',
-    ].freeze
-
     def execute
-      ALBUM_NAMES.each do |album_name|
+      album_names.each do |album_name|
         album = album(album_name)
         track_ids = track_ids(album)
         rows = rows(album, track_ids)
@@ -134,6 +122,10 @@ module ExportToCsv
         '幻想水滸伝ティアクライス ORIGINAL SOUNDTRACK' => "#{base_path}/features_tk.csv",
         '幻想水滸伝 紡がれし百年の時 オリジナルサウンドトラック' => "#{base_path}/features_tsumutoki.csv"
       }
+    end
+
+    def album_names
+      album_names_to_csv_filenames.keys
     end
   end
 end
