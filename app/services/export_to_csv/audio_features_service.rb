@@ -17,7 +17,7 @@ module ExportToCsv
       ALBUM_NAMES.each do |album_name|
         album = album(album_name)
         track_ids = track_ids(album)
-        rows = rows(track_ids)
+        rows = rows(album, track_ids)
 
         exported_file_path = album_names_to_csv_filenames[album_name]
 
@@ -50,6 +50,7 @@ module ExportToCsv
     def headers
       %w[
         id
+        album_id
         duration_ms
         tempo
         time_signature
@@ -68,7 +69,7 @@ module ExportToCsv
       ]
     end
 
-    def rows(track_ids)
+    def rows(album, track_ids)
       rows = []
 
       track_ids.each do |track_id|
@@ -91,8 +92,11 @@ module ExportToCsv
         api_track_href = features.track_href
         valence = features.valence
 
+        album_id = album.id
+
         rows << {
           id:,
+          album_id:,
           duration_ms:,
           tempo:,
           time_signature:,
