@@ -29,6 +29,7 @@ begin
   ImportToDb::ArtistService.new.execute
   ImportToDb::AlbumService.new.execute
   ImportToDb::TrackService.new.execute
+  ImportToDb::FeatureService.new.execute
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
