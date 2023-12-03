@@ -2,6 +2,7 @@ require 'csv'
 
 module ExportToCsv
   class AlbumsService
+    # FIXME: yaml から ALBUM_NAMES を読み込むようにする
     ALBUM_NAMES = [
       '幻想水滸伝 ORIGINAL GAME SOUNDTRACK',
       '幻想水滸伝II ORIGINAL GAME SOUNDTRACK Vol.1',
