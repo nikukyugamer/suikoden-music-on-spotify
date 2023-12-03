@@ -17,7 +17,7 @@ module ExportToCsv
       ALBUM_NAMES.each do |album_name|
         album = album(album_name)
         track_ids = track_ids(album)
-        rows = rows(track_ids)
+        rows = rows(album, track_ids)
 
         exported_file_path = album_names_to_csv_filenames[album_name]
 
@@ -50,6 +50,7 @@ module ExportToCsv
     def headers
       %w[
         id
+        album_id
         isrc
         name
         popularity
@@ -62,7 +63,7 @@ module ExportToCsv
       ]
     end
 
-    def rows(track_ids)
+    def rows(album, track_ids)
       rows = []
 
       # Spotify::FetchTracksService.new.execute では一度に取得できる上限が 50 なのでループする必要がある
@@ -81,8 +82,11 @@ module ExportToCsv
           preview_url = track.preview_url
           track_number = track.track_number
 
+          album_id = album.id
+
           rows << {
             id:,
+            album_id:,
             isrc:,
             name:,
             popularity:,
