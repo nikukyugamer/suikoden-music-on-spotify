@@ -1,6 +1,7 @@
 class CreateAlbums < ActiveRecord::Migration[7.1]
   def change
     create_table :albums do |t|
+      t.references :artist, null: false, foreign_key: true, comment: 'アルバムのアーティスト'
       t.string :id_str, null: false, comment: 'Spotify のアルバムID'
       t.integer :upc, null: false, comment: 'アルバムのUPC'
       t.string :name, null: false, comment: 'アルバム名'
