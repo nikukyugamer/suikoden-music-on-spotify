@@ -2,17 +2,6 @@ require 'csv'
 
 module ExportToCsv
   class AlbumsService
-    # FIXME: yaml から ALBUM_NAMES を読み込むようにする
-    ALBUM_NAMES = [
-      '幻想水滸伝 ORIGINAL GAME SOUNDTRACK',
-      '幻想水滸伝II ORIGINAL GAME SOUNDTRACK Vol.1',
-      '幻想水滸伝II ORIGINAL GAME SOUNDTRACK Vol.2',
-      '幻想水滸伝III ORIGINAL SOUNDTRACK SELECTION',
-      '幻想水滸伝IV ORIGINAL SOUNDTRACK SELECTION',
-      '幻想水滸伝V ORIGINAL SOUNDTRACK SELECTION',
-      '幻想水滸伝ティアクライス ORIGINAL SOUNDTRACK',
-      '幻想水滸伝 紡がれし百年の時 オリジナルサウンドトラック',
-    ].freeze
     EXPORTED_FILE_PATH = Rails.root.join('db/csv_files/albums.csv')
 
     def execute
@@ -45,10 +34,11 @@ module ExportToCsv
       ]
     end
 
-    def rows
+    def rows # rubocop:disable Metrics/AbcSize
+      album_names = YAML.load_file(Rails.root.join('db/album_names.yml'))
       rows = []
 
-      ALBUM_NAMES.each do |album_name|
+      album_names.each do |album_name|
         album = Spotify::FetchAlbumService.new.execute(album_name)
 
         name = album_name
