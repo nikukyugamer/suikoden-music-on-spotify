@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_03_022608) do
     t.string "url", null: false
     t.string "image_url", null: false
     t.integer "image_height", null: false
-    t.string "release_date", null: false
+    t.string "release_date_or_year", null: false
     t.string "release_date_precision", null: false
     t.string "api_href", null: false
     t.datetime "created_at", null: false

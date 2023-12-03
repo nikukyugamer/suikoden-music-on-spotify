@@ -11,7 +11,7 @@ class CreateAlbums < ActiveRecord::Migration[7.1]
       t.string :url, null: false, comment: 'アルバムのURL'
       t.string :image_url, null: false, comment: 'アルバムの画像URL'
       t.integer :image_height, null: false, comment: 'アルバムの画像の高さ'
-      t.string :release_date, null: false, comment: 'アルバムのリリース年または日'
+      t.string :release_date_or_year, null: false, comment: 'アルバムのリリース日または年'
       t.string :release_date_precision, null: false, comment: 'アルバムのリリース日単位（年または日）'
       t.string :api_href, null: false, comment: 'アルバムのAPIのURL'
 
