@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_03_022608) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_03_034452) do
   create_table "albums", force: :cascade do |t|
     t.integer "artist_id", null: false
     t.string "id_str", null: false
@@ -51,5 +51,28 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_03_022608) do
     t.index ["url"], name: "index_artists_on_url", unique: true
   end
 
+  create_table "tracks", force: :cascade do |t|
+    t.integer "album_id", null: false
+    t.string "id_str", null: false
+    t.string "isrc", null: false
+    t.string "name", null: false
+    t.integer "popularity", null: false
+    t.integer "duration_ms", null: false
+    t.integer "disc_number", null: false
+    t.integer "track_number", null: false
+    t.string "spotify_external_url", null: false
+    t.string "preview_url", null: false
+    t.string "api_href", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_tracks_on_album_id"
+    t.index ["api_href"], name: "index_tracks_on_api_href", unique: true
+    t.index ["id_str"], name: "index_tracks_on_id_str", unique: true
+    t.index ["isrc"], name: "index_tracks_on_isrc", unique: true
+    t.index ["preview_url"], name: "index_tracks_on_preview_url", unique: true
+    t.index ["spotify_external_url"], name: "index_tracks_on_spotify_external_url", unique: true
+  end
+
   add_foreign_key "albums", "artists"
+  add_foreign_key "tracks", "albums"
 end
