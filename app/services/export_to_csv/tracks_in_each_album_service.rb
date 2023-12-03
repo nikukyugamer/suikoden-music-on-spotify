@@ -2,6 +2,7 @@ require 'csv'
 
 module ExportToCsv
   class TracksInEachAlbumService
+    # FIXME: yaml から ALBUM_NAMES を読み込むようにする
     ALBUM_NAMES = [
       '幻想水滸伝 ORIGINAL GAME SOUNDTRACK',
       '幻想水滸伝II ORIGINAL GAME SOUNDTRACK Vol.1',
@@ -19,7 +20,7 @@ module ExportToCsv
         track_ids = track_ids(album)
         rows = rows(album, track_ids)
 
-        exported_file_path = album_names_to_csv_filenames[album_name]
+        exported_file_path = album_name_to_csv_filename[album_name]
 
         CSV.open(exported_file_path, 'w', force_quotes: true) do |csv|
           csv << headers
@@ -105,7 +106,7 @@ module ExportToCsv
 
     private
 
-    def album_names_to_csv_filenames
+    def album_name_to_csv_filename
       base_path = Rails.root.join('db/csv_files')
 
       {
