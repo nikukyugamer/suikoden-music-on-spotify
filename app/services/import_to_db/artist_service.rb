@@ -7,15 +7,15 @@ module ImportToDb
     end
 
     def execute
-      artists = @csv_data.map do |data|
+      artists = @csv_data.map do |row|
         Artist.new(
-          id_str: data['id'],
-          name: data['name'],
-          popularity: data['popularity'].to_i,
-          url: data['spotify_external_url'],
-          image_url: data['image_url'],
-          image_height: data['image_height'].to_i,
-          api_href: data['api_href']
+          id_str: row['id'],
+          name: row['name'],
+          popularity: row['popularity'].to_i,
+          url: row['spotify_external_url'],
+          image_url: row['image_url'],
+          image_height: row['image_height'].to_i,
+          api_href: row['api_href']
         )
       end
 
