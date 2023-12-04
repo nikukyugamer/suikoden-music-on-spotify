@@ -19,7 +19,7 @@ module ImportToDb
         )
       end
 
-      Artist.import!(artists, on_duplicate_key_ignore: true)
+      Artist.import!(artists, on_duplicate_key_ignore: false)
 
       nil
     end
