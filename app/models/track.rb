@@ -12,4 +12,8 @@ class Track < ApplicationRecord
   validates :spotify_external_url, presence: true, uniqueness: true
   validates :preview_url, presence: true, uniqueness: true
   validates :api_href, presence: true, uniqueness: true
+
+  def feature
+    Feature.find_by(id_str:)
+  end
 end
