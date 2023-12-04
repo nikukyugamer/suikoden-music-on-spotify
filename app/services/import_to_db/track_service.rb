@@ -41,7 +41,7 @@ module ImportToDb
           )
         end
 
-        Track.import!(tracks, on_duplicate_key_ignore: true)
+        Track.import!(tracks, on_duplicate_key_ignore: false)
       end
     end
   end

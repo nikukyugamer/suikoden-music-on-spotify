@@ -31,7 +31,7 @@ module ImportToDb
         )
       end
 
-      Album.import!(albums, on_duplicate_key_ignore: true)
+      Album.import!(albums, on_duplicate_key_ignore: false)
 
       nil
     end
