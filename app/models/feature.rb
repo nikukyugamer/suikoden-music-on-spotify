@@ -22,8 +22,4 @@ class Feature < ApplicationRecord
   def track
     Track.find_by(id_str:)
   end
-
-  def popularity
-    Track.find_by(id_str:).popularity
-  end
 end

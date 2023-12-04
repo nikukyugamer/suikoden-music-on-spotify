@@ -27,9 +27,9 @@ module ExportToDistCsv
       [
         feature.album.name,
         feature.track.name,
-        feature.disc_number,
-        feature.track_number,
-        feature.popularity,
+        feature.track.disc_number,
+        feature.track.track_number,
+        feature.track.popularity,
         feature.duration_ms,
         feature.tempo,
         feature.time_signature,
