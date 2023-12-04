@@ -26,7 +26,7 @@ module ExportToDistCsv
     def self.row_values(feature)
       [
         feature.album.name,
-        feature.track_name,
+        feature.track.name,
         feature.disc_number,
         feature.track_number,
         feature.popularity,
