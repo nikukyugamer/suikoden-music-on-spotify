@@ -19,16 +19,20 @@ class Feature < ApplicationRecord
   validates :api_analysis_url, presence: true, uniqueness: true
   validates :api_track_href, presence: true, uniqueness: true
 
+  def track
+    Track.find_by(id_str:)
+  end
+
   def track_name
-    Track.find_by(id_str:).name
+    track.name
   end
 
   def disc_number
-    Track.find_by(id_str:).disc_number
+    track.disc_number
   end
 
   def track_number
-    Track.find_by(id_str:).track_number
+    track.track_number
   end
 
   def popularity
