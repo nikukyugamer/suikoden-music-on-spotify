@@ -48,7 +48,7 @@ module ImportToDb
           )
         end
 
-        Feature.import!(features, on_duplicate_key_ignore: false)
+        Feature.import!(features, on_duplicate_key_ignore: false, validate_uniqueness: true)
       end
     end
   end
