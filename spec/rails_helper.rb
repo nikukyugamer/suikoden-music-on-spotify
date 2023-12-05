@@ -25,7 +25,9 @@ require 'rspec/rails'
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
+  puts `bundle exec rails db:migrate:reset`
   ActiveRecord::Migration.maintain_test_schema!
+
   ImportToDb::ArtistService.new.execute
   ImportToDb::AlbumService.new.execute
   ImportToDb::TrackService.new.execute
