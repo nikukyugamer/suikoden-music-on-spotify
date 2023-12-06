@@ -10,6 +10,10 @@ gem 'rspotify'
 gem 'sprockets-rails'
 gem 'sqlite3'
 
+group :development do
+  gem 'rails-erd'
+end
+
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'rubocop-rails', require: false
