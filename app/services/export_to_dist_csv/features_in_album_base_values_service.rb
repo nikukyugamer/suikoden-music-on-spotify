@@ -4,6 +4,7 @@ module ExportToDistCsv
       %w[
         アルバム名
         曲名
+        URL
         ディスク番号
         曲番号
         人気度
@@ -27,6 +28,7 @@ module ExportToDistCsv
       [
         feature.album.name,
         feature.track.name,
+        feature.track.spotify_external_url,
         feature.track.disc_number,
         feature.track.track_number,
         feature.track.popularity,
