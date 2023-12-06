@@ -23,8 +23,8 @@ module ExportToDistCsv
     end
 
     def rows
-      Feature.all.map do |feature|
-        ExportToDistCsv::FeaturesInAlbumBaseValuesService.row_values(feature)
+      Feature.all.map.with_index(1) do |feature, id_number|
+        ExportToDistCsv::FeaturesInAlbumBaseValuesService.row_values(feature, id_number)
       end
     end
   end

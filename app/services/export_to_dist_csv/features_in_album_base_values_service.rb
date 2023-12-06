@@ -2,6 +2,7 @@ module ExportToDistCsv
   class FeaturesInAlbumBaseValuesService
     def self.headers
       %w[
+        id
         アルバム名
         曲名
         URL
@@ -24,8 +25,9 @@ module ExportToDistCsv
       ]
     end
 
-    def self.row_values(feature)
+    def self.row_values(feature, id_number)
       [
+        id_number,
         feature.album.name,
         feature.track.name,
         feature.track.spotify_external_url,
