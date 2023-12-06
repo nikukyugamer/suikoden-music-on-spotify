@@ -32,8 +32,8 @@ module ExportToDistCsv
       album = Album.find_by(name: album_name)
       features = Feature.where(album:)
 
-      features.map do |feature|
-        ExportToDistCsv::FeaturesInAlbumBaseValuesService.row_values(feature)
+      features.map.with_index(1) do |feature, id_number|
+        ExportToDistCsv::FeaturesInAlbumBaseValuesService.row_values(feature, id_number)
       end
     end
 
