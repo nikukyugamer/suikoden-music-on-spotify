@@ -1,5 +1,6 @@
 class Feature < ApplicationRecord
   belongs_to :album
+  belongs_to :track, foreign_key: :id_str, primary_key: :id_str
 
   validates :album_id, presence: true
   validates :id_str, presence: true, uniqueness: true
@@ -18,8 +19,4 @@ class Feature < ApplicationRecord
   validates :valence, presence: true
   validates :api_analysis_url, presence: true, uniqueness: true
   validates :api_track_href, presence: true, uniqueness: true
-
-  def track
-    Track.find_by(id_str:)
-  end
 end
