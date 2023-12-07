@@ -42,9 +42,6 @@ jobs:
       - name: RSpec を実行する
         run: |
           bundle exec rspec
-      - name: 最終CSVのエクスポートタスク（全トラックを1ファイルに出力するタスク）を実行する
+      - name: 最終CSVのエクスポートタスクを実行する
         run: |
           bundle exec rails export_to_dist_csv_files:all
-      - name: 最終CSVのエクスポートタスク（アルバムごとに1ファイルに出力するタスク）を実行する
-        run: |
-          bundle exec rails export_to_dist_csv_files:each
