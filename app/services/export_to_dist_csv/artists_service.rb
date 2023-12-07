@@ -4,9 +4,7 @@ module ExportToDistCsv
   class ArtistsService
     def initialize; end # rubocop:disable Style/RedundantInitialize
 
-    def execute
-      exported_file_path = 'db/dist_csv_files/artists.csv'
-
+    def execute(exported_file_path = 'db/dist_csv_files/artists.csv')
       CSV.open(exported_file_path, 'w', force_quotes: true) do |csv|
         csv << headers
 
