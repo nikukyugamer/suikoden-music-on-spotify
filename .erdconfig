@@ -1,0 +1,36 @@
+# PDF は生成のたびに差分が出るので git で管理せずに逐次生成する
+# $ bundle exec rails update_erd:convert_dot_to_pdf
+# https://voormedia.github.io/rails-erd/customise.html
+attributes:
+  - foreign_keys
+  - primary_keys
+  - inheritance
+  - content
+disconnected: true
+filename: db/erd
+filetype: dot
+indirect: true
+inheritance: false
+notation: bachman
+orientation: horizontal # or vertical
+polymorphism: false # true にすると ActiveRecord の STI までもが表示される
+title: 幻水音楽考
+
+# true にすると現れる警告は以下のとおり
+# Warning: Ignoring invalid association :keywords on Headline (Rails couldn't find a valid model for Keyword association. Please provide the :class_name option on the association declaration. If :class_name is already provided, make sure it's an ActiveRecord::Base subclass.)
+# Warning: Ignoring invalid association :raw_keyword on Headline (Rails couldn't find a valid model for RawKeyword association. Please provide the :class_name option on the association declaration. If :class_name is already provided, make sure it's an ActiveRecord::Base subclass.)
+warn: false
+
+only: null
+exclude: null
+
+markup: true
+sort: true
+only_recursion_depth: null
+prepend_primary: false
+cluster: false
+splines: spline
+fonts:
+  normal: 'Arial'
+  bold: 'Arial Bold'
+  italic: 'Arial Italic'
