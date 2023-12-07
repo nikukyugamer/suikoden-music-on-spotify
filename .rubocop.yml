@@ -5,7 +5,7 @@ AllCops:
     - 'db/Schemafile'
     - 'db/schema.rb'
     - 'vendor/**/*'
-    - 'spec/**/*' # ここは緒論あり
+    # - 'spec/**/*' # ここは緒論あり
     - 'config/**/*' # ここは細分化していいかも
     - 'bin/**/*'
     - 'tmp/**/*'
