@@ -21,3 +21,7 @@ vendor/bundle
 /public/assets
 
 /config/master.key
+
+# PDF は生成のたびに差分が出るので git で管理せずに逐次生成する
+# $ bundle exec rails update_erd:convert_dot_to_pdf
+db/erd.pdf
