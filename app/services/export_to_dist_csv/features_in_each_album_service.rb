@@ -6,11 +6,11 @@ module ExportToDistCsv
       @album_name = album_name
     end
 
-    def execute
+    def execute(exported_files_dir = Rails.root.join('db/dist_csv_files'))
       raise 'アルバム名の指定が誤っています' unless @album_name.in?(album_names)
 
       exported_file_name = album_name_to_exported_file_name[@album_name]
-      exported_file_path = Rails.root.join("db/dist_csv_files/#{exported_file_name}")
+      exported_file_path = "#{exported_files_dir}/#{exported_file_name}"
 
       CSV.open(exported_file_path, 'w', force_quotes: true) do |csv|
         csv << headers
