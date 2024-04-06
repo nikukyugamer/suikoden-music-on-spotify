@@ -20,10 +20,6 @@ jobs:
   form:
     runs-on: ubuntu-22.04
     name: 幻水音楽考
-    strategy:
-      matrix:
-        ruby-version:
-          - .ruby-version
     steps:
       - name: $ git clone する
         uses: actions/checkout@v4
