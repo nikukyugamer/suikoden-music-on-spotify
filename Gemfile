@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '3.3.4'
+ruby '3.4.2'
 
 gem 'activerecord-import'
+gem 'csv' # Ruby v3.4.0 以降は組み込みの gem ではなくなったので明示的に指定する必要がある
 gem 'dotenv-rails'
 gem 'puma'
 gem 'rails'
