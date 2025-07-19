@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.4.4'
+ruby '3.4.5'
 
 gem 'activerecord-import'
 gem 'csv' # Ruby v3.4.0 以降は組み込みの gem ではなくなったので明示的に指定する必要がある
